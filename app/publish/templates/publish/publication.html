@@ -1,0 +1,104 @@
+{% extends 'layout/base.html' %}
+
+
+x{% block content %}
+<p id="vehicle-id" hidden>{{ vehicle.id }}</p>
+<div class="container">
+  <div class="page-header">
+    <h2 class="text-center">VENTA: {{ vehicle.brand }} MODELO {{ vehicle.model }} AÑO {{  vehicle.year }}</h2>
+  </div>
+  <div class="row justify-content-center">
+    <p class="lead" style="text-align: center;">PRECIO: ${{ vehicle.price }} MNX</p>
+  </div>
+  <div class="page-header">
+    <hr>
+
+    <form id_form="publish_form" method="post" action="" role="form">
+      <div class="form-group">
+        <label for="year">Año del auto</label>
+        <input type="number" class="form-control" id="year" name="year" value="{{ vehicle.year }}" min="1900" max="2020" maxlength="4" size="4" minlength="4" disabled>
+        <div id="div-year" class="alert-danger" style="display: none"></div>
+      </div>
+      <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <input type="text" class="form-control" id="tipo" name="tipo" value="{{ vehicle.type }}" disabled>
+      </div>
+      <div class="form-group">
+        <label for="marca">Marca</label>
+        <input type="text" class="form-control" id="marca" name="marca" value="{{ vehicle.brand }}" disabled>
+      </div> 
+      <div class="form-group">
+        <label for="modelo">Modelo</label>
+        <input type="text" class="form-control" id="modelo" name="modelo" value="{{ vehicle.model }}" disabled>
+        <div id="div-modelo" class="alert-danger" style="display: none"></div>
+      </div>
+      <div class="form-group">
+        <label for="combustible">Combustible</label>
+        <input type="text" class="form-control" id="combustible" name="combustible" value="{{ vehicle.fuel_type }}" disabled>
+      </div>
+      <div class="form-group">
+        <label for="transmision">Transmisión</label>
+        <input type="text" class="form-control" id="transmision" name="transmision" value="{{ vehicle.transmision }}" disabled>
+      </div>
+      <div class="form-group">
+        <label for="kilometros">Kilometraje</label>
+        <input type="number" class="form-control" id="kilometros" name="kilometros" value="{{ vehicle.kilometrage }}" min="0" max="500000" disabled>
+        <div id="div-kilometros" class="alert-danger" style="display: none"></div>
+      </div>
+      <div class="form-group">
+        <label for="motor">Motor</label>
+        <input type="number" class="form-control" id="motor" name="motor" value="{{ vehicle.motor }}" min="0.1", max="7" step="0.1" disabled>
+        <div id="div-motor" class="alert-danger" style="display: none"></div>
+      </div>
+      <div class="form-group">
+        <label for="color">Color</label>
+        <input type="text" class="form-control" id="color" name="color" value="{{ vehicle.color }}" disabled>
+        <div id="div-color" class="alert-danger" style="display: none"></div>
+      </div>
+      <div class="form-group">
+        <label for="potencia">Potencia</label>
+        <input type="number" class="form-control" id="potencia" name="potencia" min="50" value="{{ vehicle.power }}" disabled>
+        <div id="div-potencia" class="alert-danger" style="display: none"></div>
+      </div>
+      <div class="form-group">
+        <label for="puertas">Número de puertas</label>
+        <input type="number" class="form-control" id="puertas" name="puertas" min="2" max="6" value="{{ vehicle.doors }}" disabled>
+        <div id="div-puertas" class="alert-danger" style="display: none"></div>
+      </div>
+      <div class="form-group">
+        <label for="estado">Estado</label>
+        <input type="text" class="form-control" id="estado" name="estado" value="{{ vehicle.state }}" disabled>
+      </div>
+      <div class="form-group">
+        <label for="precio">Precio</label>
+        <input type="number" step="1" class="form-control" id="precio" name="precio" value="{{ vehicle.price}}" disabled>
+        <div id="div-precio" class="alert-danger" style="display: none"></div>
+      </div>
+      <hr>
+      <div class="text-right">
+        <button type="button" id="comprar" class="btn btn-primary" class="pull-right" data-toggle="modal" data-target="#ModalComprar">Comprar</button>
+      </div>
+    </form>
+  </div>
+  <div id="ModalComprar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Venta automóvil</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Procesando compra...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+

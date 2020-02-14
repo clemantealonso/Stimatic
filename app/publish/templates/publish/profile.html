@@ -1,0 +1,151 @@
+{% extends 'layout/base.html' %}
+
+
+{% block content %}
+<div class="container">
+  <div class="page-header">
+    <h2 class="text-center">Publicar auto</h2>
+  </div>
+  <p class="lead">Sube la información de tu automóvil y públicalo para compradores interesados</p>
+
+  <div class="page-header">
+    <hr>
+
+    <form id_form="publish_form" method="post" action="" role="form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+      <div class="form-group">
+        <label for="year">Año del auto</label>
+        <input type="number" class="form-control" id="year" name="year" value="2010" min="1900" max="2020" maxlength="4" size="4" minlength="4" required >
+        <div id="div-year" class="alert-danger" style="display: none"></div>
+      </div>
+      <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <select class="form-control" id="tipo" name="tipo">
+          <option>Sedán</option>
+          <option>Hatchback</option>
+          <option>SUV</option>
+          <option>Van</option>
+          <option>Coupé</option>
+          <option>Pick Up</option>
+          <option>Convertible</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="marca">Marca</label>
+        <select class="form-control" id="marca", name="marca" required>
+          <option value="">Selecciona una marca</option>
+        </select>
+        <div id="div-marca" class="alert-danger" style="display: none"></div>
+      </div> 
+      <div class="form-group">
+        <label for="modelo">Modelo</label>
+        <select class="form-control" id="modelo", name="modelo" required>
+          <option value="">Selecciona un modelo</option>
+        </select>
+        <div id="div-modelo" class="alert-danger" style="display: none"></div>
+      </div>
+      <div class="form-group">
+        <label for="combustible">Combustible</label>
+        <select class="form-control" id="combustible" name="combustible">
+          <option>Gasolina</option>
+          <option>Diesel</option>
+          <option>Híbrido</option>
+          <option>Eléctrico</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="transmision">Transmisión</label>
+        <select class="form-control" id="transmision", name="transmision">
+          <option value="automática">Automática</option>
+          <option value="manual">Manual</option>
+          <option value="semiautomática">Semiautomática</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="kilometros">Kilometraje</label>
+        <input type="number" class="form-control" id="kilometros" name="kilometros" value="76000" min="0" max="500000" required>
+        <div id="div-kilometros" class="alert-danger" style="display: none"></div>
+      </div>
+      <div class="form-group">
+        <label for="motor">Motor</label>
+        <input type="number" class="form-control" id="motor" name="motor" value="1.6" min="0.1", max="7" step="0.1">
+        <div id="div-motor" class="alert-danger" style="display: none"></div>
+      </div>
+      <div class="form-group">
+        <label for="color">Color</label>
+        <input type="text" class="form-control" id="color" name="color" placeholder="Negro" >
+        <div id="div-color" class="alert-danger" style="display: none"></div>
+      </div>
+      <div class="form-group">
+        <label for="potencia">Potencia</label>
+        <input type="number" class="form-control" id="potencia" name="potencia" min="50" placeholder="180" required>
+        <div id="div-potencia" class="alert-danger" style="display: none"></div>
+      </div>
+      <div class="form-group">
+        <label for="puertas">Número de puertas</label>
+        <input type="number" class="form-control" id="puertas" name="puertas" min="2" max="6" placeholder="4">
+        <div id="div-puertas" class="alert-danger" style="display: none"></div>
+      </div>
+      <div class="form-group">
+        <label for="foto">Fotografía</label>
+        <input type="file" class="file" accept="image/png, .jpeg, .jpg" id="foto" name="foto" placeholder="180" required>
+        <div id="div-foto" class="alert-danger" style="display: none"></div>
+      </div>
+      <div class="form-group">
+        <label for="estado">Estado</label>
+        <select class="form-control" id="estado" name="estado">
+          <option value="Aguascalientes">Aguascalientes</option>
+          <option value="Baja California">Baja California </option>
+          <option value="Baja California Sur">Baja California Sur </option>
+          <option value="Campeche">Campeche </option>
+          <option value="Chiapas">Chiapas </option>
+          <option value="Chihuahua">Chihuahua </option>
+          <option value="Coahuila">Coahuila </option>
+          <option value="Colima">Colima </option>
+          <option value="Distrito Federal">Distrito Federal</option>
+          <option value="Durango">Durango </option>
+          <option value="Estado de México">Estado de México </option>
+          <option value="Guanajuato">Guanajuato </option>
+          <option value="Guerrero">Guerrero </option>
+          <option value="Hidalgo">Hidalgo </option>
+          <option value="Jalisco">Jalisco </option>
+          <option value="Michoacán">Michoacán </option>
+          <option value="Morelos">Morelos </option>
+          <option value="Nayarit">Nayarit </option>
+          <option value="Nuevo León">Nuevo León </option>
+          <option value="Oaxaca">Oaxaca </option>
+          <option value="Puebla">Puebla </option>
+          <option value="Querétaro">Querétaro </option>
+          <option value="Quintana Roo">Quintana Roo </option>
+          <option value="San Luis Potosí">San Luis Potosí </option>
+          <option value="Sinaloa">Sinaloa </option>
+          <option value="Sonora">Sonora </option>
+          <option value="Tabasco">Tabasco </option>
+          <option value="Tamaulipas">Tamaulipas </option>
+          <option value="Tlaxcala">Tlaxcala </option>
+          <option value="Veracruz">Veracruz </option>
+          <option value="Yucatán">Yucatán </option>
+          <option value="Zacatecas">Zacatecas</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="precio">Precio</label>
+        <input type="number" step="1" class="form-control" id="precio" name="precio" placeholder="58000" required>
+        <div id="div-precio" class="alert-danger" style="display: none"></div>
+      </div>
+      <hr>
+      <div class="form-group">
+        <label for="correo">Correo</label>
+        <input type="email"  class="form-control" id="correo" name="correo" placeholder="ejemplo@mail.com" required>
+        <div id="div-correo" class="alert-danger" style="display: none"></div>
+      </div>
+      <div class="text-right">
+        <button type="button" id="publish" class="btn btn-primary" class="pull-right">Publicar</button>
+      </div>
+    </form>
+  </div>
+  <script src="../../static/js/script_publish.js"></script>
+</div>
+{% endblock %}
+
+
